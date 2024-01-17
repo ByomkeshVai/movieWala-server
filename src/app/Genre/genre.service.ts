@@ -11,7 +11,7 @@ const createGenreDB = async (payload: TGenre) => {
 const getAllGenreFromDB = async () => {
   try {
     const result = await Genre.find({ isDeleted: false });
-    return { categories: result };
+    return { genres: result };
   } catch (error: any) {
     throw new AppError(httpStatus.BAD_REQUEST, error.message);
   }
@@ -34,9 +34,9 @@ const deleteGenreDB = async (id: string) => {
   }
 };
 
-const getSingleGenreFromDB = async (categoryID: string) => {
+const getSingleGenreFromDB = async (genreID: string) => {
   try {
-    const courseFind = await Genre.findById(categoryID);
+    const courseFind = await Genre.findById(genreID);
 
     if (!courseFind) {
       throw new AppError(httpStatus.BAD_REQUEST, 'Genre not found');
