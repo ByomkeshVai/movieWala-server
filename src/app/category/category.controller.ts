@@ -31,7 +31,19 @@ const deleteCategory = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: 201,
-    message: 'Category created Successfully',
+    message: 'Category Delete Successfully',
+    data: result,
+  });
+});
+
+const getSingleCategory = catchAsync(async (req, res) => {
+  const id = req.params.categoryID;
+  const result = await CategoryServices.getSingleCategoryFromDB(id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Course and Reviews retrieved successfully',
     data: result,
   });
 });
@@ -39,4 +51,6 @@ const deleteCategory = catchAsync(async (req, res) => {
 export const CategoryController = {
   createCategory,
   getAllCategory,
+  deleteCategory,
+  getSingleCategory,
 };

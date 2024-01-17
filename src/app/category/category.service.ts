@@ -10,7 +10,7 @@ const createCategoryDB = async (payload: TCategory) => {
 
 const getAllCategoryFromDB = async () => {
   try {
-    const result = await Category.find({});
+    const result = await Category.find({ isDeleted: false });
     return { categories: result };
   } catch (error: any) {
     throw new AppError(httpStatus.BAD_REQUEST, error.message);
@@ -34,8 +34,29 @@ const deleteCategoryDB = async (id: string) => {
   }
 };
 
+const getSingleCategoryFromDB = async (categoryID: string) => {
+  try {
+    const courseFind = await Category.findById(categoryID);
+
+    if (!courseFind) {
+      throw new AppError(httpStatus.BAD_REQUEST, 'Category not found');
+    }
+
+    const categoryData = courseFind.toObject();
+
+    const result = {
+      categories: categoryData,
+    };
+
+    return result;
+  } catch (error: any) {
+    throw new AppError(httpStatus.BAD_REQUEST, error.message);
+  }
+};
+
 export const CategoryServices = {
   createCategoryDB,
   getAllCategoryFromDB,
   deleteCategoryDB,
+  getSingleCategoryFromDB,
 };
