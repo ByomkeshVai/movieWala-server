@@ -54,9 +54,27 @@ const getSingleCategoryFromDB = async (categoryID: string) => {
   }
 };
 
+const updateCategoryDB = async (categoryID: string, Payload: TCategory) => {
+  const updateBasicInfo = await Category.findByIdAndUpdate(
+    categoryID,
+    Payload,
+    {
+      new: true,
+      runValidators: true,
+    },
+  );
+
+  if (!updateBasicInfo) {
+    throw new AppError(httpStatus.BAD_REQUEST, 'Failed to update Category!');
+  }
+
+  return updateBasicInfo;
+};
+
 export const CategoryServices = {
   createCategoryDB,
   getAllCategoryFromDB,
   deleteCategoryDB,
   getSingleCategoryFromDB,
+  updateCategoryDB,
 };

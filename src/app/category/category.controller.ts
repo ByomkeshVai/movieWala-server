@@ -43,7 +43,19 @@ const getSingleCategory = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Course and Reviews retrieved successfully',
+    message: 'Category retrieved successfully',
+    data: result,
+  });
+});
+
+const updateCategory = catchAsync(async (req, res) => {
+  const { categoryID } = req.params;
+  const result = await CategoryServices.updateCategoryDB(categoryID, req.body);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Category is updated succesfully',
     data: result,
   });
 });
@@ -53,4 +65,5 @@ export const CategoryController = {
   getAllCategory,
   deleteCategory,
   getSingleCategory,
+  updateCategory,
 };
