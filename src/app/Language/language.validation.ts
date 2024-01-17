@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 const CreateLanguageValidationSchema = z.object({
-  name: z.string(),
+  language: z.string(),
 });
 
 export const LanguageValidations = {

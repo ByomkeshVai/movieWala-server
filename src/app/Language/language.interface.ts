@@ -1,4 +1,4 @@
 export interface TLanguage {
-  name: string;
-  flag: string;
+  language: string;
+  isDeleted?: boolean;
 }

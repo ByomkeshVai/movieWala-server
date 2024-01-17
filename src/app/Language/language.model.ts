@@ -3,14 +3,14 @@ import { TLanguage } from './language.interface';
 
 const languageSchema = new Schema<TLanguage>(
   {
-    name: {
+    language: {
       type: String,
       required: [true, 'Language Name is required'],
       unique: true,
     },
-    flag: {
-      type: String,
-      required: [true, 'Flag Name is required'],
+    isDeleted: {
+      type: Boolean,
+      default: false,
     },
   },
   {

@@ -10,10 +10,21 @@ const router = express.Router();
 router.post(
   '/',
   validateRequest(LanguageValidations.CreateLanguageValidationSchema),
-  auth(USER_ROLE.admin, USER_ROLE.moderator),
+  // auth(USER_ROLE.admin, USER_ROLE.moderator),
   LanguageController.createLanguage,
 );
 
+router.put(
+  '/:languageID',
+  validateRequest(LanguageValidations.CreateLanguageValidationSchema),
+  // auth(USER_ROLE.admin, USER_ROLE.moderator),
+  LanguageController.updateLanguage,
+);
+
+router.delete('/:id', LanguageController.deleteLanguage);
+
 router.get('/', LanguageController.getAllLanguage);
+
+router.get('/:languageID', LanguageController.getSingleLanguage);
 
 export const LanguageRoutes = router;
