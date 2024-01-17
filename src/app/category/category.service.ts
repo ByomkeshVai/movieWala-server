@@ -17,7 +17,25 @@ const getAllCategoryFromDB = async () => {
   }
 };
 
+const deleteCategoryDB = async (id: string) => {
+  try {
+    const result = await Category.findByIdAndUpdate(
+      id,
+      {
+        isDeleted: true,
+      },
+      {
+        new: true,
+      },
+    );
+    return result;
+  } catch (error: any) {
+    throw new AppError(httpStatus.BAD_REQUEST, error.message);
+  }
+};
+
 export const CategoryServices = {
   createCategoryDB,
   getAllCategoryFromDB,
+  deleteCategoryDB,
 };

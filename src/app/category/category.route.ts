@@ -10,7 +10,7 @@ const router = express.Router();
 router.post(
   '/',
   validateRequest(CategoryValidations.CreateCategoryValidationSchema),
-  auth(USER_ROLE.admin, USER_ROLE.moderator),
+  // auth(USER_ROLE.admin, USER_ROLE.moderator),
   CategoryController.createCategory,
 );
 

@@ -3,10 +3,14 @@ import { TCategory } from './category.interface';
 
 const categorySchema = new Schema<TCategory>(
   {
-    name: {
+    category: {
       type: String,
       required: [true, 'Category Name is required'],
       unique: true,
+    },
+    isDeleted: {
+      type: Boolean,
+      default: false,
     },
   },
   {
