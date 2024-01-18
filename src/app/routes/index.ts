@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { CategoryRoutes } from '../category/category.route';
 import { AuthRoutes } from '../auth/auth.route';
 import { GenreRoutes } from '../Genre/genre.route';
+import { LanguageRoutes } from '../Language/language.route';
 const router = Router();
 
 const moduleRoutes = [
@@ -16,6 +17,10 @@ const moduleRoutes = [
   {
     path: '/categories',
     route: CategoryRoutes,
+  },
+  {
+    path: '/languages',
+    route: LanguageRoutes,
   },
 ];
 
