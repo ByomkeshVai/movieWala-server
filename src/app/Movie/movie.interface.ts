@@ -9,7 +9,7 @@ export interface TMovie {
   languages: Types.ObjectId[];
   tags: string[];
   cast: string[];
-  movieLink: string[] | string;
+  movieLink: string[];
   trailerLink: string;
   isDeleted?: boolean;
   posterImage?: string;

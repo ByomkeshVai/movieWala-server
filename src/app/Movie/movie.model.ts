@@ -2,7 +2,7 @@ import { Schema, model } from 'mongoose';
 import { TMovie } from './movie.interface';
 
 const movieSchema = new Schema<TMovie>({
-  title: { type: String, required: true },
+  title: { type: String, required: true, unique: true, trim: true },
   description: { type: String, required: true },
   category: { type: Schema.Types.ObjectId, required: true, ref: 'Category' },
   quality: { type: String, enum: ['high', 'low', 'medium'], required: true },
