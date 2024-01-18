@@ -11,6 +11,7 @@ const movieSchema = new Schema<TMovie>({
   tags: { type: [String], required: true },
   movieLink: { type: [String], required: true },
   trailerLink: { type: String, required: true },
+  posterImage: { type: String, required: false },
   isDeleted: { type: Boolean, default: false },
 });
 

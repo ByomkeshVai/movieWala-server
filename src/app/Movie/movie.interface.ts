@@ -8,7 +8,9 @@ export interface TMovie {
   genres: Types.ObjectId[];
   languages: Types.ObjectId[];
   tags: string[];
+  cast: string[];
   movieLink: string[] | string;
   trailerLink: string;
   isDeleted?: boolean;
+  posterImage?: string;
 }

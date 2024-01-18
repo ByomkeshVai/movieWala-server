@@ -3,6 +3,7 @@ import { CategoryRoutes } from '../category/category.route';
 import { AuthRoutes } from '../auth/auth.route';
 import { GenreRoutes } from '../Genre/genre.route';
 import { LanguageRoutes } from '../Language/language.route';
+import { MovieRoutes } from '../Movie/movie.route';
 const router = Router();
 
 const moduleRoutes = [
@@ -14,6 +15,11 @@ const moduleRoutes = [
     path: '/genres',
     route: GenreRoutes,
   },
+  {
+    path: '/movies',
+    route: MovieRoutes,
+  },
+
   {
     path: '/categories',
     route: CategoryRoutes,
