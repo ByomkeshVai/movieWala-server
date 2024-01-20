@@ -1,12 +1,10 @@
-import { Types } from 'mongoose';
-
 export interface TMovie {
   title: string;
   description: string;
-  category: Types.ObjectId;
+  category: string;
   quality: 'high' | 'low' | 'medium';
-  genres: Types.ObjectId[];
-  languages: Types.ObjectId[];
+  genres: string[];
+  languages: string[];
   tags: string[];
   cast: string[];
   movieLink: string[];
