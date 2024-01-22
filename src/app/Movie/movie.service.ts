@@ -49,9 +49,22 @@ const deleteMovieFromDB = async (id: string) => {
   return result;
 };
 
+const featuredMovieFromDB = async (id: string, newFeaturedValue: boolean) => {
+  console.log(id, newFeaturedValue);
+  const result = await Movie.findByIdAndUpdate(
+    id,
+    { featured: newFeaturedValue },
+    {
+      new: true,
+    },
+  );
+  return result;
+};
+
 export const MovieServices = {
   createMovieDB,
   getAllMovieFromDB,
   getSingleMovieFromDB,
   deleteMovieFromDB,
+  featuredMovieFromDB,
 };

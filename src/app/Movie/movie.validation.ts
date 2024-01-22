@@ -15,6 +15,7 @@ const CreateMovieValidationSchema = z.object({
   trailerLink: z.string(),
   posterImage: z.string().optional(),
   isDeleted: z.boolean().default(false),
+  featured: z.boolean().default(false),
 });
 
 export const MovieValidations = {

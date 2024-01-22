@@ -18,4 +18,6 @@ router.delete('/:id', movieControllers.deleteMovie);
 
 router.get('/', movieControllers.getAllMovie);
 
+router.put('/change-featured/:id', movieControllers.featuredMovie);
+
 export const MovieRoutes = router;

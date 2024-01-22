@@ -14,4 +14,5 @@ export interface TMovie {
   trailerLink: string;
   isDeleted?: boolean;
   posterImage?: string;
+  featured?: boolean;
 }

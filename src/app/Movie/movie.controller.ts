@@ -51,9 +51,27 @@ const deleteMovie = catchAsync(async (req, res) => {
   });
 });
 
+const featuredMovie = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const { currentFeaturedValue } = req.body;
+
+  const result = await MovieServices.featuredMovieFromDB(
+    id,
+    currentFeaturedValue,
+  );
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Movie is Featured Updated',
+    data: result,
+  });
+});
+
 export const movieControllers = {
   createMovie,
   getAllMovie,
   deleteMovie,
   getSingleMovie,
+  featuredMovie,
 };

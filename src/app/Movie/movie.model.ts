@@ -21,6 +21,7 @@ const movieSchema = new Schema<TMovie>({
   trailerLink: { type: String, required: true },
   posterImage: { type: String, required: false },
   isDeleted: { type: Boolean, default: false },
+  featured: { type: Boolean, default: false },
 });
 
 movieSchema.pre('find', function (next) {
