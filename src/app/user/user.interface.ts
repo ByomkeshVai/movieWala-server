@@ -10,6 +10,8 @@ export interface TUser {
   passwordChangedAt?: Date;
   role: 'admin' | 'user' | 'moderator';
   passwordHistory?: { password: string; timestamp: Date }[];
+  status: 'active' | 'blocked' | 'in-progress';
+  isDeleted: boolean;
 }
 
 export interface UserModel extends Model<TUser> {

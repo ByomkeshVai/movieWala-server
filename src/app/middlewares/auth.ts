@@ -16,12 +16,16 @@ const auth = (...requiredRole: TUserRole[]) => {
       throw new UnAuthorize('Unauthorized Access');
     }
 
-    const decoded = jwt.verify(
-      token,
-      config.jwt_access_secret as string,
-    ) as JwtPayload;
+    let decoded;
 
-    // console.log(decoded);
+    try {
+      decoded = jwt.verify(
+        token,
+        config.jwt_access_secret as string,
+      ) as JwtPayload;
+    } catch (err) {
+      throw new AppError(httpStatus.UNAUTHORIZED, 'Unauthorized');
+    }
 
     // const { username, role, email, iat, exp } = decoded;
     const { email, role, iat } = decoded;

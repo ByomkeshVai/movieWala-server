@@ -40,6 +40,12 @@ const userSchema = new Schema<TUser, UserModel>(
       enum: ['user', 'admin', 'moderator'],
       default: 'user',
     },
+    status: {
+      type: String,
+      enum: ['active', 'blocked', 'in-progress'],
+      default: 'in-progress',
+    },
+    isDeleted: { type: Boolean, default: false },
   },
   {
     timestamps: true,

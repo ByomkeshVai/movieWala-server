@@ -2,9 +2,9 @@ export interface TMovie {
   title: string;
   description: string;
   category: string;
-  quality: 'high' | 'low' | 'medium';
-  genres: string[];
-  languages: string[];
+  quality?: 'high' | 'low' | 'medium';
+  genre: string[];
+  language: string[];
   tags: string[];
   cast: string[];
   movieLink: string[];
