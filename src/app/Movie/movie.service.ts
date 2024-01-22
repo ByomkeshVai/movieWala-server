@@ -2,6 +2,8 @@ import httpStatus from 'http-status';
 import AppError from '../errors/AppError';
 import { TMovie } from './movie.interface';
 import { Movie } from './movie.model';
+import QueryBuilder from '../builder/QueryBuilder';
+import { MovieSearchableFields } from './Movie.constant';
 
 const createMovieDB = async (payload: TMovie) => {
   const userData = payload;
@@ -14,6 +16,30 @@ const createMovieDB = async (payload: TMovie) => {
   return newMovie;
 };
 
+const getAllMovieFromDB = async (query: Record<string, unknown>) => {
+  const movieQuery = new QueryBuilder(Movie.find().populate('Category'), query)
+    .search(MovieSearchableFields)
+    .filter()
+    .sort()
+    .paginate()
+    .fields();
+
+  const result = await movieQuery.modelQuery;
+  const meta = await movieQuery.countTotal();
+
+  return {
+    meta,
+    result,
+  };
+};
+
+const getSingleMovieFromDB = async (id: string) => {
+  const result = await Movie.findById(id).populate('Category');
+  return result;
+};
+
 export const MovieServices = {
   createMovieDB,
+  getAllMovieFromDB,
+  getSingleMovieFromDB,
 };

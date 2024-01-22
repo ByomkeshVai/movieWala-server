@@ -7,6 +7,7 @@ export interface TUser {
   email: string;
   username: string;
   password: string;
+  profileImageUrl: string;
   passwordChangedAt?: Date;
   role: 'admin' | 'user' | 'moderator';
   passwordHistory?: { password: string; timestamp: Date }[];

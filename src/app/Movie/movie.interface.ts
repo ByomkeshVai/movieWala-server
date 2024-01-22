@@ -1,6 +1,9 @@
 export interface TMovie {
   title: string;
   description: string;
+  releaseYear: string;
+  rating: string;
+  stars: string[];
   category: string;
   quality?: 'high' | 'low' | 'medium';
   genre: string[];

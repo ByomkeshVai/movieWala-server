@@ -5,6 +5,9 @@ const movieSchema = new Schema<TMovie>({
   title: { type: String, required: true, unique: true, trim: true },
   description: { type: String, required: true },
   category: { type: String, required: true, ref: 'Category' },
+  releaseYear: { type: String, required: true },
+  rating: { type: String, required: true },
+  stars: { type: [String], required: true },
   quality: {
     type: String,
     enum: ['high', 'low', 'medium'],

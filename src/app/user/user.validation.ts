@@ -1,12 +1,13 @@
 import { z } from 'zod';
 
-const roleEnum = z.enum(['admin', 'user']);
+const roleEnum = z.enum(['admin', 'user', 'moderator']);
 const statusEnum = z.enum(['active', 'blocked', 'in-progress']);
 
 const createUserSchemaValidation = z.object({
   email: z.string().email(),
   username: z.string(),
   password: z.string(),
+
   // .refine(
   //   (value) =>
   //     /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/.test(
@@ -18,7 +19,8 @@ const createUserSchemaValidation = z.object({
   //   },
   // ),
   passwordChangedAt: z.date().optional(),
-  role: roleEnum,
+  profileImageUrl: z.string(),
+  role: roleEnum.default('user'),
   status: statusEnum.default('in-progress'),
   isDeleted: z.boolean().default(false),
 });

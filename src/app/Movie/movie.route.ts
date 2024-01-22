@@ -1,5 +1,5 @@
-import express, { NextFunction, Request, Response } from 'express';
-import { upload } from '../utils/sendImageToCloudinary';
+import express from 'express';
+
 import validateRequest from '../middlewares/validateRequest';
 import { MovieValidations } from './movie.validation';
 import { movieControllers } from './movie.controller';
