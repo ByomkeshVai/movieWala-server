@@ -2,7 +2,7 @@ export interface TMovie {
   title: string;
   description: string;
   releaseYear: string;
-  rating: string;
+  rating: number;
   stars: string[];
   category: string;
   quality?: 'high' | 'low' | 'medium';

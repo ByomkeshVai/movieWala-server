@@ -1,5 +1,4 @@
 import express from 'express';
-
 import validateRequest from '../middlewares/validateRequest';
 import { MovieValidations } from './movie.validation';
 import { movieControllers } from './movie.controller';
@@ -12,5 +11,11 @@ router.post(
   validateRequest(MovieValidations.CreateMovieValidationSchema),
   movieControllers.createMovie,
 );
+
+router.get('/:id', movieControllers.getSingleMovie);
+
+router.delete('/:id', movieControllers.deleteMovie);
+
+router.get('/', movieControllers.getAllMovie);
 
 export const MovieRoutes = router;

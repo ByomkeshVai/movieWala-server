@@ -16,7 +16,7 @@ const createMovie = catchAsync(async (req, res) => {
   });
 });
 
-const getAllCourses = catchAsync(async (req, res) => {
+const getAllMovie = catchAsync(async (req, res) => {
   const result = await MovieServices.getAllMovieFromDB(req.query);
 
   sendResponse(res, {
@@ -39,8 +39,21 @@ const getSingleMovie = catchAsync(async (req, res) => {
   });
 });
 
+const deleteMovie = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await MovieServices.deleteMovieFromDB(id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Movie is deleted succesfully',
+    data: result,
+  });
+});
+
 export const movieControllers = {
   createMovie,
-  getAllCourses,
+  getAllMovie,
+  deleteMovie,
   getSingleMovie,
 };

@@ -17,7 +17,7 @@ const createMovieDB = async (payload: TMovie) => {
 };
 
 const getAllMovieFromDB = async (query: Record<string, unknown>) => {
-  const movieQuery = new QueryBuilder(Movie.find().populate('Category'), query)
+  const movieQuery = new QueryBuilder(Movie.find({ isDeleted: false }), query)
     .search(MovieSearchableFields)
     .filter()
     .sort()
@@ -34,7 +34,18 @@ const getAllMovieFromDB = async (query: Record<string, unknown>) => {
 };
 
 const getSingleMovieFromDB = async (id: string) => {
-  const result = await Movie.findById(id).populate('Category');
+  const result = await Movie.findById(id);
+  return result;
+};
+
+const deleteMovieFromDB = async (id: string) => {
+  const result = await Movie.findByIdAndUpdate(
+    id,
+    { isDeleted: true },
+    {
+      new: true,
+    },
+  );
   return result;
 };
 
@@ -42,4 +53,5 @@ export const MovieServices = {
   createMovieDB,
   getAllMovieFromDB,
   getSingleMovieFromDB,
+  deleteMovieFromDB,
 };

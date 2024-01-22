@@ -6,7 +6,7 @@ const movieSchema = new Schema<TMovie>({
   description: { type: String, required: true },
   category: { type: String, required: true, ref: 'Category' },
   releaseYear: { type: String, required: true },
-  rating: { type: String, required: true },
+  rating: { type: Number, required: true },
   stars: { type: [String], required: true },
   quality: {
     type: String,

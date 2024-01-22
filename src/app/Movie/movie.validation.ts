@@ -5,7 +5,7 @@ const CreateMovieValidationSchema = z.object({
   description: z.string(),
   category: z.string(),
   releaseYear: z.string(),
-  rating: z.string(),
+  rating: z.number(),
   stars: z.array(z.string()),
   quality: z.enum(['high', 'low', 'medium']),
   genre: z.array(z.string()),
